@@ -13,4 +13,4 @@ config = {
 }
 
 ## Enter your Open API Key here
-OPENAI_API_KEY = ''
+OPENAI_API_KEY = "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"
