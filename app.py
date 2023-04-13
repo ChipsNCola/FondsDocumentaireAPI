@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 import config
 import aicontent
-
+import openai
+import os
 def page_not_found(e):
     return render_template('404.html'), 404
 
@@ -20,8 +21,10 @@ def coldEmails():
 
         submission = request.form['query']
         query = "Posez moi votre question: {}".format(submission)
-        openAIAnswerUnformatted = aicontent.ask(query)
-        openAIAnswer = openAIAnswerUnformatted.replace('\n', '<br>')
-        prompt = 'AI Suggestions for {} are:'.format(submission)
+        openAIAnswer = aicontent.ask(query)
+        prompt = 'Réponse'.format(submission)
 
     return render_template('index.html', **locals())
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=8000,debug=False)
